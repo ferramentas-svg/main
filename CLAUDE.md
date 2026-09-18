@@ -23,6 +23,23 @@ Checklist antes de agendar qualquer mensagem:
 2. Cada marcador tem o seu par. Marcador ímpar aparece cru na mensagem.
 3. Negrito aninhado dentro de itálico (`_texto *negrito* texto_`) é válido.
 
+## Espaçamento e blocos
+
+**Parágrafos são separados por linha em branco.** Copy recebida com as linhas
+coladas (só quebra simples entre parágrafos) vira um bloco denso no WhatsApp e
+afunda a leitura. Reescrever com uma linha em branco entre cada bloco de ideia
+antes de agendar.
+
+Continuam coladas, sem linha em branco no meio:
+
+- A chamada e o link que ela apresenta
+  (`⚠️ As vagas estão sendo preenchidas:` + `🔗 https://...`).
+- Itens de uma mesma lista (as linhas de `✅`, por exemplo).
+- Versos de uma mesma frase quebrada de propósito.
+
+Emoji que abre a linha leva espaço antes do texto: `▶️ Assiste`, não
+`▶️Assiste`. Espaço solto no fim da linha e linha em branco dupla saem.
+
 ## Escopo de envio
 
 - Por padrão, todo disparo vai para **todos os grupos** e **todas as contas**
