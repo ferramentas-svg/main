@@ -64,9 +64,18 @@ Emoji que abre a linha leva espaço antes do texto: `▶️ Assiste`, não
 
 - As tools de envio aceitam **apenas URL pública**. Não há upload de arquivo
   local pelo MCP — o `generate-media-id` serve só para posts do Instagram.
-- Link do Google Drive não serve: os arquivos não têm permissão pública e o
-  servidor do SendFlow recebe 403. Subir pela interface, que hospeda no
-  `storage.sendflow.pro`, e usar essa URL.
+- **A URL precisa terminar em extensão de arquivo** (`.png`, `.jpg`, …). O
+  SendFlow valida isso na criação da ação e recusa com
+  "Formato de arquivo inválido!" quando não há extensão.
+- Link do Google Drive **não serve em nenhuma forma**, nem quando o arquivo
+  está público (`role: reader, type: anyone`). O link `/view` devolve HTML, e
+  as URLs de serviço direto (`lh3.googleusercontent.com/d/<id>`,
+  `drive.usercontent.google.com/download?id=…`, `drive.google.com/uc?export=view`)
+  não têm extensão, então caem na validação acima. Testado em 26/09.
+- Caminhos que funcionam: subir pela interface do SendFlow (hospeda no
+  `storage.sendflow.pro`) ou qualquer URL pública terminada em extensão — a
+  CDN do ActiveCampaign (`content.app-us1.com/.../arquivo.png`) passa na
+  validação.
 - Se a copy **referencia a mídia** ("a mensagem aí em cima", "aperta o play no
   áudio", "no print acima"), não agendar o texto sem o arquivo — sozinho ele
   fica quebrado.
