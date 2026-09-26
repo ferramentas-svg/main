@@ -47,6 +47,10 @@ Emoji que abre a linha leva espaço antes do texto: `▶️ Assiste`, não
   completa.
 - **Só marcar participantes quando solicitado explicitamente**
   (`options.mentionAllParticipants`). Sem pedido, não marca.
+- **Janela de menção: 8h às 22h.** Quando a marcação está valendo, ela se
+  aplica apenas às mensagens agendadas entre 08:00 e 22:00 (horário de
+  Brasília), inclusive. Fora dessa faixa — 23h, 23h30, madrugada — a mensagem
+  vai sem menção, para não acordar a base.
 
 ## Verificação de links
 
@@ -56,12 +60,27 @@ Emoji que abre a linha leva espaço antes do texto: `▶️ Assiste`, não
 - Links raiz de terceiros (YouTube, por exemplo) são exceção e não levam sigla.
 - Sigla divergente é erro de copy: avisar antes de agendar, não agendar.
 
+## Mídia (imagem, áudio, vídeo)
+
+- As tools de envio aceitam **apenas URL pública**. Não há upload de arquivo
+  local pelo MCP — o `generate-media-id` serve só para posts do Instagram.
+- Link do Google Drive não serve: os arquivos não têm permissão pública e o
+  servidor do SendFlow recebe 403. Subir pela interface, que hospeda no
+  `storage.sendflow.pro`, e usar essa URL.
+- Se a copy **referencia a mídia** ("a mensagem aí em cima", "aperta o play no
+  áudio", "no print acima"), não agendar o texto sem o arquivo — sozinho ele
+  fica quebrado.
+
 ## Agendamento
 
 - Horários informados estão em horário de Brasília (UTC-3).
   `scheduledTo` é ISO 8601 em UTC — somar 3 horas. Ex.: 19h BRT = `T22:00:00Z`.
 - Depois de criar, confirmar com `get-action` que voltou
-  `scheduled: true` e `error: null`.
+  `scheduled: true` e `error: null`. **`success: true` na criação não garante
+  que a ação existe**: em 24/09 um `send-image-action` devolveu
+  `{"success": true, "actionId": "..."}` e a ação nunca foi persistida —
+  `get-action` respondeu 404 e ela não constava em `list-actions`. Conferir
+  sempre, e em lote usar `list-actions` para checar todas de uma vez.
 - Para corrigir uma ação já agendada: `cancel-actions` e recriar.
   `get-action` devolve payload mínimo e **não** retorna o texto da mensagem,
   então ações criadas pela interface não podem ser reconstruídas pela API sem
@@ -75,3 +94,7 @@ Emoji que abre a linha leva espaço antes do texto: `▶️ Assiste`, não
 | WCM Atual - Domingo - Aplicação | `LahJb7ltS90576gYeu4c` |
 | WFP - Anterior | `Nx0SFwVXlOpFQySy7RXU` |
 | WCD - Atual | `pqZ1quppMxTMPRfzn6SU` |
+| WFP - Atual | `9CCFiGon3VC7zuNnBzlg` |
+| WEPSET26 - ATUAL | `xJBmgZnzAErbv9gYDMRM` |
+| DQCOUT26 - Meteórico | `29a22nrE5uv5g0WQ9TBB` |
+| Desafios Antigos | `O8a5yFUR94rA0U1a6Xov` |
