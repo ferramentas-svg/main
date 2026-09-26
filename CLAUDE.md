@@ -71,6 +71,35 @@ Emoji que abre a linha leva espaço antes do texto: `▶️ Assiste`, não
   áudio", "no print acima"), não agendar o texto sem o arquivo — sozinho ele
   fica quebrado.
 
+### Imagem + texto num disparo só
+
+`send-messages-action` envia mídia e texto na mesma ação, como a interface faz.
+O formato do item de mídia **não** é o que o schema do MCP sugere — a URL vai
+em `message.image.url`, aninhada, e não em `message.url` nem no topo do item.
+Formato confirmado pelo suporte do SendFlow em 26/09:
+
+```json
+{
+  "releaseId": "<releaseId>",
+  "accountsFrom": "accounts",
+  "accounts": ["<accountId>", "..."],
+  "to": { "type": "release", "ids": ["<releaseId>"] },
+  "data": { "messages": [
+    { "type": "imageMessage",
+      "message": { "image": { "url": "https://..." }, "caption": "" } },
+    { "type": "extendedTextMessage",
+      "message": { "text": "..." } }
+  ]},
+  "scheduledTo": "2026-09-27T20:00:00.000Z"
+}
+```
+
+Com `to.type: "release"`, o `to.ids` recebe o **próprio releaseId** — não pode
+ficar vazio e não precisa dos GIDs dos grupos. A campanha inteira é atingida.
+Erros que indicam formato errado: "Campo message é obrigatório em cada item"
+(falta o wrapper `message`) e "URL do arquivo não informado!" (falta o nível
+`image`).
+
 ## Agendamento
 
 - Horários informados estão em horário de Brasília (UTC-3).
