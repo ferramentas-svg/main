@@ -76,6 +76,27 @@ Emoji que abre a linha leva espaço antes do texto: `▶️ Assiste`, não
   `storage.sendflow.pro`) ou qualquer URL pública terminada em extensão — a
   CDN do ActiveCampaign (`content.app-us1.com/.../arquivo.png`) passa na
   validação.
+
+### Hospedar imagem recebida do Drive
+
+Quando o briefing traz imagem do Drive (link ou nome do arquivo), hospedar no
+próprio repositório, que é público:
+
+1. Achar o arquivo com `search_files` (`title contains '...'`) e baixar com
+   `download_file_content`. O retorno é base64 grande, salvo em arquivo:
+   extrair com `jq -r .content | base64 -d`.
+2. Copiar para `midia/` com nome sem espaço nem acento, commitar e dar push.
+3. Usar a URL raw fixada no commit:
+   `https://raw.githubusercontent.com/ferramentas-svg/main/<sha>/midia/<arquivo>.png`.
+   O commit no meio da URL faz o link nunca mudar.
+4. Agendar com `send-messages-action` (formato abaixo), imagem antes do texto.
+
+- Só PNG e JPG. WEBP precisa ser convertido antes.
+- Tudo o que entra no repositório fica público para sempre. Só material que
+  já vai ser divulgado nos grupos.
+- Vídeo ainda não: arquivo grande pesa no download e no repositório.
+- Validado em 14/10 com a capa do Estadão na WFP - Atual. A ação foi aceita e
+  a imagem carregou na plataforma.
 - Se a copy **referencia a mídia** ("a mensagem aí em cima", "aperta o play no
   áudio", "no print acima"), não agendar o texto sem o arquivo — sozinho ele
   fica quebrado.
