@@ -95,8 +95,10 @@ próprio repositório, que é público:
 - Tudo o que entra no repositório fica público para sempre. Só material que
   já vai ser divulgado nos grupos.
 - Vídeo ainda não: arquivo grande pesa no download e no repositório.
-- Validado em 14/10 com a capa do Estadão na WFP - Atual. A ação foi aceita e
-  a imagem carregou na plataforma.
+- Validado com a capa do Estadão na WFP - Atual: enviada em 15/10 às 19h,
+  imagem e texto chegaram no grupo.
+- A mesma URL serve para trocar a capa dos grupos
+  (`update-group-picture-action`, campo `picture`).
 - Se a copy **referencia a mídia** ("a mensagem aí em cima", "aperta o play no
   áudio", "no print acima"), não agendar o texto sem o arquivo — sozinho ele
   fica quebrado.
