@@ -99,6 +99,13 @@ próprio repositório, que é público:
   imagem e texto chegaram no grupo.
 - A mesma URL serve para trocar a capa dos grupos
   (`update-group-picture-action`, campo `picture`).
+- Áudio MP3 também funciona: item
+  `{ "type": "audioMessage", "message": { "audio": { "url": "..." }, "ptt": false } }`.
+  O SendFlow converte sozinho para OGG/Opus no envio. Validado no DQCOUT26
+  em 26/10 às 22h.
+- Enquete no mesmo disparo: item
+  `{ "type": "pollMessage", "message": { "poll": { "name": "...", "values": ["..."], "selectableCount": 1 } } }`.
+  O nome da enquete não aceita negrito nem itálico, então tirar os `*` e `_`.
 - Se a copy **referencia a mídia** ("a mensagem aí em cima", "aperta o play no
   áudio", "no print acima"), não agendar o texto sem o arquivo — sozinho ele
   fica quebrado.
