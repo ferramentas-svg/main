@@ -109,6 +109,11 @@ próprio repositório, que é público:
 - Se a copy **referencia a mídia** ("a mensagem aí em cima", "aperta o play no
   áudio", "no print acima"), não agendar o texto sem o arquivo — sozinho ele
   fica quebrado.
+- **Nunca deduzir qual é a mídia.** Se o briefing marca `[imagem]`, aponta 👆
+  ou fala de um arquivo sem mandar o link ou o nome, perguntar antes. Não
+  reaproveitar a imagem do mesmo horário da semana anterior nem escolher uma
+  que "combine" com o texto: em 16/11 a imagem das 20h50 da WFP saiu deduzida
+  e estava errada.
 
 ### Imagem + texto num disparo só
 
