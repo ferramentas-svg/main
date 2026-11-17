@@ -165,6 +165,7 @@ Erros que indicam formato errado: "Campo message é obrigatório em cada item"
 | --- | --- |
 | WCM Anterior | `ly4HcYeRc7RQmibxpkxl` |
 | WCM Atual - Domingo - Aplicação | `LahJb7ltS90576gYeu4c` |
+| WCM - Antigos (ex-Webnários Médicos Antigos) | `ZcBHcywDfOJkbdQFLDIm` |
 | WFP - Anterior | `Nx0SFwVXlOpFQySy7RXU` |
 | WCD - Atual | `pqZ1quppMxTMPRfzn6SU` |
 | WFP - Atual | `9CCFiGon3VC7zuNnBzlg` |
